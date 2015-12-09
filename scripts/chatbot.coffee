@@ -5,10 +5,10 @@
 
 # chat work api url
 chatworkApiUrl = 'https://api.chatwork.com/v1'
-# sim ismi
+# sim imis
 # [todo]
 # pass by arguments
-simIsmi = 'xxxxxxxxxxxxxxx'
+simImsi = 'xxxxxxxxxxxxxxx'
 
 module.exports = (robot) ->
   chatworkPost = (message) ->
@@ -32,17 +32,17 @@ module.exports = (robot) ->
       @exec command, (error, stdout, stderr) ->
         soracomCallback(error, stdout, stderr)
     else if type == 'activate'
-      command = "soracom subscriber activate --imsi=#{simIsmi}"
+      command = "soracom subscriber activate --imsi=#{simImsi}"
       robot.logger.info "command #{command}"
       @exec command, (error, stdout, stderr) ->
         soracomCallback(error, stdout, stderr)
     else if type == 'deactivate'
-      command = "soracom subscriber deactivate --imsi=#{simIsmi}"
+      command = "soracom subscriber deactivate --imsi=#{simImsi}"
       robot.logger.info "command #{command}"
       @exec command, (error, stdout, stderr) ->
         soracomCallback(error, stdout, stderr)
     else if type == 'speedclass'
-      command = "soracom subscriber update_speed_class --imsi=#{simIsmi} --speed-class=#{speedclass}"
+      command = "soracom subscriber update_speed_class --imsi=#{simImsi} --speed-class=#{speedclass}"
       robot.logger.info "command #{command}"
       @exec command, (error, stdout, stderr) ->
         soracomCallback(error, stdout, stderr)
